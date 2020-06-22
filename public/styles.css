@@ -1,20 +1,92 @@
 body {
-  font-size: 120%;
-  font-family: Arial;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-button, input {
-  font-size: 100%;
-  font-family: Arial;
+.wrapper {
+  margin: 0 auto;
+  max-width: 825px;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 1.6rem;
 }
 
+h1 {
+  font-size: 1.7rem;
+  color: #d16106;
+}
+
+p {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.totalBox {
+  width: 70%;
+ color: #d16106;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+    }
+  
+  .total {
+    font-size: 1.5rem;
+    
+  }
+ #textTotal {
+    text-decoration: underline;
+  }
+  .form {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+  
+ .form-group {
+	font-size: 0.9rem;
+}
+.form-control {
+	font-size: 0.9rem;
+}
+input::placeholder {
+  color: #aeaeae;
+  padding:.2rem .5rem;
+}
+input:focus::placeholder 
+{color: transparent;
+} 
+#t-name, #t-amount {
+  border: 1px solid #d6d6d6;
+  width: 70%;
+  padding: .2rem .5rem;
+}
+
+.btn {
+	margin: 1rem
+}
+.fa-hand-holding-usd {
+  font-size: 2rem;
+}
+.transactions {
+  text-align: left;
+  max-height: 300px;
+  overflow: auto;
+  width: 90%;
+  margin: 0 auto;
+}
 table {
   width: 100%;
+  border: 1px solid #c2a9a9;
+  background-color: #fff;
+  /* padding: 1rem; */
 }
 
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: .5rem 0 .5rem 1.5rem;
+}
+th {
+ color: #d16106;
 }
 
 tr:nth-child(even) {
@@ -25,26 +97,11 @@ tr:nth-child(even) {
   color: red;
 }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 825px;
-  text-align: center;
+footer p, a {
+  color: #d16106;
+  font-size: 0.7rem;
 }
 
-.total {
-  font-size: 150%;
-  text-decoration: underline;
-}
 
-.form {
-  margin-top: 25px;
-  width: 100%;
-}
 
-.transactions {
-  text-align: left;
-  max-height: 300px;
-  overflow: auto;
-  width: 90%;
-  margin: 0 auto;
-}
+
