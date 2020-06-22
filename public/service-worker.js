@@ -1,46 +1,64 @@
-const cacheName = 'v1';
-
-const cacheAssets = [
+console.log('service-worker code working!');
+const FILES_TO_CACHE = [
   'index.html', 'index.js', '/js/main.js', '/icons/icon-192x192.png', '/icons/icon-512x512.png'
 ];
-
-// Setting event listener for install
+const CACHE_NAME = 'static-cache-v2';
+const DATA_CACHE_NAME = 'data-cache-v1';
+// Setting event listener for Service Worker install
 self.addEventListener('install', evt => {
-  console.log('Files were pre-cached successfully!');
   evt.waitUntil(
-    caches
-    .open(cacheName)
-    .then(cache => {
-     console.log('Service Worker: Caching now!');
-      cache.addAll(cacheAssets);
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('The files were pre-cached successfully!');
+     cache.addAll(FILES_TO_CACHE);
     })
-    .then(() => self.skipWaiting())
+  );
+  self.skipWaiting();
+});
+ // Setting event listener for Service Worker activate
+self.addEventListener('activate', evt => {
+  evt.waitUntil(
+    caches.keys().then(keyList => {
+      return Promise.all(
+        keyList.map(key => {
+          if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
+            console.log('Removing old cache data', key);
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
+  self.clients.claim();
+});
+// Setting event listener for Service Worker fetch
+self.addEventListener('fetch', evt => {
+  if (evt.request.url.includes('/api/')) {
+    evt.respondWith(
+      caches
+        .open(DATA_CACHE_NAME)
+        .then(cache => {
+          return fetch(evt.request)
+            .then(response => {
+              // If the response was good, clone it and store it in the cache.
+              if (response.status === 200) {
+                cache.put(evt.request.url, response.clone());
+              }
+              return response;
+            })
+            .catch(err => {
+              // Network request failed, try to get it from the cache.
+              return cache.match(evt.request);
+            });
+        })
+        .catch(err => console.log(err))
+    );
+    return;
+  }
+  evt.respondWith(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.match(evt.request).then(response => {
+        return response || fetch(evt.request);
+      });
+    })
   );
 });
-
- // Setting event listener for activate
- self.addEventListener('activate', evt => {
-  console.log('Service Worker activated!');
-   evt.waitUntil(
-   caches.keys().then(cacheNames => {
-       return Promise.all(
-        cacheNames.map(cache => {
-           if (cache !== cacheName) {
-             console.log('Removing old cache data');
-             return caches.delete(cache);
-           }
-         })
-       );
-     })
-   );
-  //  self.clients.claim();
- });
-
-// Setting event listener for fetch
-self.addEventListener('fetch', evt => {
- console.log('Service worker fetching!');
- evt.respondWith(
-  fetch(evt.request).catch(() => caches.match(evt.request))
-)
-});
-
