@@ -35,3 +35,12 @@ self.addEventListener('install', evt => {
    );
   //  self.clients.claim();
  });
+
+// Setting event listener for fetch
+self.addEventListener('fetch', evt => {
+ console.log('Service worker fetching!');
+ evt.respondWith(
+  fetch(evt.request).catch(() => caches.match(evt.request))
+)
+});
+
