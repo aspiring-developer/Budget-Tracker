@@ -1,6 +1,7 @@
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .wrapper {
   margin: 0 auto;
   max-width: 825px;
@@ -21,39 +22,44 @@ p {
 
 .totalBox {
   width: 70%;
- color: #d16106;
+  color: #d16106;
   text-align: center;
   margin: 0 auto;
   margin-top: 1rem;
   padding: 1rem;
   border-radius: 10px;
-    }
-  
-  .total {
-    font-size: 1.5rem;
-    
-  }
- #textTotal {
-    text-decoration: underline;
-  }
-  .form {
-    margin-top: 1.5rem;
-    width: 100%;
-  }
-  
- .form-group {
-	font-size: 0.9rem;
 }
+
+.total {
+  font-size: 1.5rem;
+}
+
+#textTotal {
+  text-decoration: underline;
+}
+
+.form {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.form-group {
+  font-size: 0.9rem;
+}
+
 .form-control {
-	font-size: 0.9rem;
+  font-size: 0.9rem;
 }
+
 input::placeholder {
   color: #aeaeae;
-  padding:.2rem .5rem;
+  padding: .2rem .5rem;
 }
-input:focus::placeholder 
-{color: transparent;
-} 
+
+input:focus::placeholder {
+  color: transparent;
+}
+
 #t-name, #t-amount {
   border: 1px solid #d6d6d6;
   width: 70%;
@@ -61,11 +67,13 @@ input:focus::placeholder
 }
 
 .btn {
-	margin: 1rem
+  margin: 1rem
 }
+
 .fa-hand-holding-usd {
   font-size: 2rem;
 }
+
 .transactions {
   text-align: left;
   max-height: 300px;
@@ -73,6 +81,7 @@ input:focus::placeholder
   width: 90%;
   margin: 0 auto;
 }
+
 table {
   width: 100%;
   border: 1px solid #c2a9a9;
@@ -85,8 +94,9 @@ td, th {
   text-align: left;
   padding: .5rem 0 .5rem 1.5rem;
 }
+
 th {
- color: #d16106;
+  color: #d16106;
 }
 
 tr:nth-child(even) {
@@ -101,7 +111,3 @@ footer p, a {
   color: #d16106;
   font-size: 0.7rem;
 }
-
-
-
-

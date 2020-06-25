@@ -34,7 +34,8 @@ A PWA-based budget tracker application that allows user to access it offline or 
    
 **Installing on Computers:** 
 - In computer’s Chrome browser, navigate to the PWA app’s URL 
-- Click the 'Add' icon on the right side of the address-bar then click “Open” 
+- Click the 'Add' icon on the right side of the address-bar then click “Install” 
+- If "Install" option is not available, click "Open"
 - After opening the app, go to computer's status bar, right click on the app's icon and click "Pin to taskbar" to have it pinned there.
 
 ### License:

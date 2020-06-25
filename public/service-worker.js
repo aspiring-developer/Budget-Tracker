@@ -9,12 +9,12 @@ self.addEventListener('install', evt => {
   evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       console.log('The files were pre-cached successfully!');
-     cache.addAll(FILES_TO_CACHE);
+      cache.addAll(FILES_TO_CACHE);
     })
   );
   self.skipWaiting();
 });
- // Setting event listener for Service Worker activate
+// Setting event listener for Service Worker activate
 self.addEventListener('activate', evt => {
   evt.waitUntil(
     caches.keys().then(keyList => {
